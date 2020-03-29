@@ -88,6 +88,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       Gaps.vGap16,
+      Gaps.vLine,
       LoginTextField(
         focusNode: _nodeText1,
         controller: _phoneController,
@@ -96,6 +97,7 @@ class _LoginPageState extends State<LoginPage> {
         hintText: '请输入手机号',
       ),
       Gaps.vGap8,
+      Gaps.vLine,
       LoginTextField(
         focusNode: _nodeText2,
         controller: _vCodeController,
@@ -108,42 +110,32 @@ class _LoginPageState extends State<LoginPage> {
         },
       ),
       Gaps.vGap8,
+      Gaps.vLine,
+      MyButton(
+        onPressed: _isClick ? _login : null,
+        text: '登录',
+      ),
+      Gaps.vLine,
       Container(
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.center,
           child: GestureDetector(
             child: RichText(
               text: TextSpan(
-                text: '提示：未注册账号的手机号，请先',
+                text: '注册登录，即代表同意',
                 style: Theme.of(context)
                     .textTheme
                     .subtitle
-                    .copyWith(fontSize: Dimens.font_sp14),
+                    .copyWith(fontSize: Dimens.font_sp16),
                 children: <TextSpan>[
                   TextSpan(
-                      text: '注册',
+                      text: '《用户与隐私协议》',
                       style: TextStyle(color: Theme.of(context).errorColor)),
-                  TextSpan(text: '。'),
                 ],
               ),
             ),
             onTap: () =>
                 NavigatorUtils.push(context, LoginRouter.registep1Page),
           )),
-      Gaps.vGap24,
-      MyButton(
-        onPressed: _isClick ? _login : null,
-        text: '登录',
-      ),
-      Container(
-        height: 40.0,
-        alignment: Alignment.centerRight,
-        child: GestureDetector(
-          child: Text(
-            '忘记密码',
-            style: Theme.of(context).textTheme.subtitle,
-          ),
-        ),
-      )
     ];
   }
 }

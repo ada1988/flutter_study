@@ -108,6 +108,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
           decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
               hintText: widget.hintText,
+              hintStyle: TextStyle(fontSize: 22),
               counterText: '',
               focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
