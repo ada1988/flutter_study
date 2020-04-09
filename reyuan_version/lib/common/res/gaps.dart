@@ -41,6 +41,12 @@ class Gaps {
     height: 24.0,
     child: const VerticalDivider(),
   );
+
+  static Widget vLineBlack = const SizedBox(
+    width: 0.9,
+    height: 12.0,
+    child: const VerticalDivider(color: Colors.black,),
+  );
   
   static const Widget empty = const SizedBox.shrink();
 }

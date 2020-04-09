@@ -94,7 +94,16 @@ class _LoginTextFieldState extends State<LoginTextField> {
     return Stack(
       alignment: Alignment.centerRight,
       children: <Widget>[
+        widget.keyboardType == TextInputType.phone ? Positioned(
+            left: 0.0,
+            child: new Text('+86',
+                                    style: new TextStyle(
+                                        fontSize: 16.0,
+                                        color: Colors.black,
+                                        inherit: false))
+        ):Center(),
         TextField(
+          textAlign: widget.keyboardType == TextInputType.phone?TextAlign.center:TextAlign.left,
           focusNode: widget.focusNode,
           maxLength: widget.maxLength,
           obscureText: widget.isInputPwd ? !_isShowPwd : false,
@@ -108,8 +117,9 @@ class _LoginTextFieldState extends State<LoginTextField> {
           decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
               hintText: widget.hintText,
-              hintStyle: TextStyle(fontSize: 22),
+              hintStyle: TextStyle(fontSize: 18),
               counterText: '',
+              labelStyle:TextStyle(fontSize: 22),
               focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
                       color: themeData.primaryColor,
@@ -134,7 +144,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
                 child: LoadAssetImage('login/qyg_shop_icon_delete',
                   key: Key('${widget.keyName}_delete'),
                   width: 18.0,
-                  height: 40.0,
+                  height: 30.0,
                 ),
                 onTap: () => widget.controller.text = '',
               ),
@@ -157,6 +167,7 @@ class _LoginTextFieldState extends State<LoginTextField> {
                 },
               ),
             ),
+            widget.getVCode == null ? Gaps.empty :Container(padding:EdgeInsets.only(left:20),height: 20, child: VerticalDivider(color: Colors.grey)),
             widget.getVCode == null ? Gaps.empty : Gaps.hGap15,
             widget.getVCode == null ? Gaps.empty :
             Theme(
@@ -171,19 +182,18 @@ class _LoginTextFieldState extends State<LoginTextField> {
               child: FlatButton(
                 onPressed: _isClick ? _getVCode : null,
                 textColor: themeData.primaryColor,
-                color: Colors.transparent,
-                disabledTextColor: isDark ? Colours.dark_text : Colors.white,
-                disabledColor: isDark ? Colours.dark_text_gray : Colours.text_gray_c,
-                shape:RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(1.0),
-                    side: BorderSide(
-                      color: _isClick ? themeData.primaryColor : Colors.transparent,
-                      width: 0.8,
-                    )
-                ),
+                //disabledTextColor: isDark ? Colours.dark_text : Colors.white,
+                disabledColor: _isClick ? Colours.dark_text_gray : Colors.white,
+                //  shape:RoundedRectangleBorder(
+                //      borderRadius: BorderRadius.circular(1.0),
+                //      side: BorderSide(
+                //        color: _isClick ? themeData.primaryColor : Colors.transparent,
+                //        width: 0.8,
+                //      )
+                //  ),
                 child: Text(
-                  _isClick ? '获取验证码' : '（$_currentSecond s）',
-                  style: TextStyle(fontSize: Dimens.font_sp12),
+                  _isClick ? '获取验证码' : '$_currentSecond s',
+                  style: TextStyle(fontSize: Dimens.font_sp14),
                 ),
               ),                
             )

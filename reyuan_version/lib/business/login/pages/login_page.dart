@@ -58,20 +58,12 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         //backgroundColor: Color(0xFF282F52),
-        body: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage("assets/images/login/login_bj.png"),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
-          child: MyScrollView(
+        body: MyScrollView(
             keyboardConfig: Utils.getKeyboardActionsConfig(
                 context, [_nodeText1, _nodeText2]),
-            padding: EdgeInsets.only(left: 16.0, right: 16.0, top: 20.0),
+            padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 20.0),
             children: _buildBody(),
-          ),
-        ));
+          ));
   }
 
   _buildBody() {
@@ -84,11 +76,12 @@ class _LoginPageState extends State<LoginPage> {
       Center(
         child: const Text(
           '找到你的另一半，从这里开始',
-          style: TextStyles.textSize20,
+          style: TextStyles.textSize16,
         ),
       ),
       Gaps.vGap16,
       Gaps.vLine,
+      
       LoginTextField(
         focusNode: _nodeText1,
         controller: _phoneController,
@@ -96,6 +89,7 @@ class _LoginPageState extends State<LoginPage> {
         keyboardType: TextInputType.phone,
         hintText: '请输入手机号',
       ),
+      
       Gaps.vGap8,
       Gaps.vLine,
       LoginTextField(
@@ -125,11 +119,11 @@ class _LoginPageState extends State<LoginPage> {
                 style: Theme.of(context)
                     .textTheme
                     .subtitle
-                    .copyWith(fontSize: Dimens.font_sp16),
+                    .copyWith(fontSize: Dimens.font_sp12),
                 children: <TextSpan>[
                   TextSpan(
                       text: '《用户与隐私协议》',
-                      style: TextStyle(color: Theme.of(context).errorColor)),
+                      style: TextStyle(color: Theme.of(context).primaryColor)),
                 ],
               ),
             ),

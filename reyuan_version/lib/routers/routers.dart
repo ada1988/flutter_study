@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:reyuan_version/business/home/home_routers.dart';
 import 'package:reyuan_version/business/home/pages/home_page.dart';
 import 'package:reyuan_version/business/login/login_router.dart';
+import 'package:reyuan_version/business/mine/mine_routers.dart';
 import 'package:reyuan_version/routers/404.dart';
 import 'package:reyuan_version/routers/router_init.dart';
 
@@ -33,8 +34,9 @@ class Routes {
     
     _listRouter.clear();
     /// 各自路由由各自模块管理，统一在此添加初始化
-    _listRouter.add(LoginRouter());
-    _listRouter.add(HomeRouter());
+    _listRouter.add(LoginRouter());//登录路由
+    _listRouter.add(HomeRouter());//主页路由
+    _listRouter.add(MineRouter());//我的路由
   
     /// 初始化路由
     _listRouter.forEach((routerProvider) {

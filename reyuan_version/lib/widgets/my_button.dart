@@ -19,13 +19,17 @@ class MyButton extends StatelessWidget {
     bool isDark = ThemeUtils.isDark(context);
     return FlatButton(
       onPressed: onPressed,
-      textColor: isDark ? Colours.dark_button_text : Colors.white,
-      color: isDark ? Colours.dark_app_main : Colours.app_main,
+      textColor: isDark ? Colors.black87 : Colors.black,
+      //color: isDark ? Colours.dark_button_text : Colours.app_main,
       disabledTextColor: isDark ? Colours.dark_text_disabled : Colours.text_disabled,
-      disabledColor: isDark ? Colours.dark_button_disabled : Colours.button_disabled,
-      //shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      //disabledColor: isDark ? Colours.dark_button_disabled : Colours.button_disabled,
+      //shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
       child: Container(
         height: 48,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors: [Color(0xffFFDD55), Color(0xffFFBB00)]),// 渐变色
+          borderRadius: BorderRadius.circular(25)
+        ),
         width: double.infinity,
         alignment: Alignment.center,
         child: Text(text, style: TextStyle(fontSize: Dimens.font_sp18),),

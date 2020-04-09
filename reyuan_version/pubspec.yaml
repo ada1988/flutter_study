@@ -69,6 +69,8 @@ dependencies:
   barcode_scan:
     git:
       url: https://github.com/simplezhli/flutter_barcode_reader.git
+  flutter_picker:
+    git: git://github.com/yangyxd/flutter_picker.git
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -89,3 +91,4 @@ flutter:
     - assets/images/
     - assets/images/login/
     - assets/images/home/
+    - assets/images/mine/
