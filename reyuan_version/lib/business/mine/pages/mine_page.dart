@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reyuan_version/business/mine/pages/mine_auth_page.dart';
+import 'package:reyuan_version/business/mine/pages/mine_info_edit.dart';
 import 'package:reyuan_version/business/mine/pages/mine_qr_page.dart';
 import 'package:reyuan_version/widgets/my_scroll_view.dart';
 import 'package:reyuan_version/widgets/load_image.dart';
@@ -203,13 +204,9 @@ class _MinePageState extends State<MinePage> {
             onTap: () {
               AppNavigator.pushResult(
                   context,
-                  InputTextPage(
-                    title: '个人资料',
-                    hintText: '这里有一段完美的简介…',
-                    content: _mineIntroduction,
-                  ), (result) {
+                  MineInfoEditPage(), (result) {
                 setState(() {
-                  _mineIntroduction = result.toString();
+                  //_mineIntroduction = result.toString();
                 });
               });
             },

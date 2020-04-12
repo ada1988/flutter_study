@@ -11,6 +11,7 @@ class ClickItem extends StatelessWidget {
     this.iconWidget,
     this.titleWidget,
     this.content: '',
+    this.contentWidget,
     this.textAlign: TextAlign.start,
     this.maxLines: 1,
     this.decoration
@@ -21,6 +22,7 @@ class ClickItem extends StatelessWidget {
   final Widget iconWidget;
   final Widget titleWidget;
   final String content;
+  final Widget contentWidget;
   final TextAlign textAlign;
   final int maxLines;
   final Decoration decoration;
@@ -34,7 +36,7 @@ class ClickItem extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(0, 15.0, 15.0, 15.0),
         constraints: BoxConstraints(
             maxHeight: double.infinity,
-            minHeight: 50.0
+            minHeight: 48.0
         ),
         width: double.infinity,
         decoration: null == decoration?BoxDecoration(
@@ -47,18 +49,18 @@ class ClickItem extends StatelessWidget {
           crossAxisAlignment: maxLines == 1 ? CrossAxisAlignment.center : CrossAxisAlignment.start,
           children: <Widget>[
             null == iconWidget ? SizedBox():iconWidget,
-            null == titleWidget ? Text(title,style: TextStyle(fontSize: Dimens.font_sp15,fontWeight: FontWeight.bold),):titleWidget,
+            null == titleWidget ? Text(title,style: TextStyle(fontSize: Dimens.font_sp15,),):titleWidget,
             const Spacer(),
             Gaps.hGap16,
             Expanded(
               flex: 4,
-              child: Text(
+              child: null == contentWidget ?Text(
                 content,
                 maxLines: maxLines,
                 textAlign: maxLines == 1 ? TextAlign.right : textAlign,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.subtitle.copyWith(fontSize: Dimens.font_sp12)
-              ),
+              ):contentWidget,
             ),
             Gaps.hGap8,
             Opacity(
