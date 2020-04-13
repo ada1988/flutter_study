@@ -1,4 +1,5 @@
 import 'package:fluro/fluro.dart';
+import 'package:reyuan_version/business/mine/pages/edit_ice_breaking_page.dart';
 import 'package:reyuan_version/business/mine/pages/mine_auth_page.dart';
 import 'package:reyuan_version/business/mine/pages/mine_info_edit.dart';
 import 'package:reyuan_version/business/mine/pages/mine_page.dart';
@@ -14,6 +15,7 @@ class MineRouter implements IRouterProvider{
   static String mineRealAuthPage = '/mine/auth/real';
   static String mineRealAuthPhonePage = '/mine/auth/real/phone';
   static String mineInfoEditPage = '/mine/info/edit';
+  static String editIceBreakingPage = '/mine/info/edit/icebreaking';
   @override
   void initRouter(Router router) {
     router.define(minePage, handler: Handler(handlerFunc: (_, params) => MinePage()));
@@ -22,7 +24,7 @@ class MineRouter implements IRouterProvider{
     router.define(mineRealAuthPage, handler: Handler(handlerFunc: (_, params) => MineRealAuthPage()));
     router.define(mineRealAuthPhonePage, handler: Handler(handlerFunc: (_, params) => MineRealAuthPhonePage()));
     router.define(mineInfoEditPage, handler: Handler(handlerFunc: (_, params) => MineInfoEditPage()));
-    
+    router.define(editIceBreakingPage, handler: Handler(handlerFunc: (_, params) => EditIceBreakingPage()));
   }
   
 }
