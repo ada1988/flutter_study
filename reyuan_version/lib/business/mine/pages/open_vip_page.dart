@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:reyuan_version/common/res/resources.dart';
 import 'package:reyuan_version/common/util/app_navigator.dart';
 import 'package:reyuan_version/widgets/load_image.dart';
@@ -25,15 +26,39 @@ class _OpenVipPageState extends State<OpenVipPage> {
                 color: Colors.white,
                 child: Column(children: <Widget>[
                   Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/mine/vip_bg.png"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
                     child: SizedBox(
-                      height: 240,
+                      height: 292,
                       width: MediaQuery.of(context).size.width,
+                      child: new Swiper(
+                        // 横向
+                        scrollDirection: Axis.horizontal,
+                        // 布局构建
+                        itemBuilder: (BuildContext context, int index) {
+                          return new Image.network(
+                            "http://hbimg.b0.upaiyun.com/a3e592c653ea46adfe1809e35cd7bc58508a6cb94307-aaO54C_fw658",
+                            fit: BoxFit.fill,
+                          );
+                        },
+                        //条目个数
+                        itemCount: 6,
+                        // 自动翻页
+                        autoplay: true,
+                        // 分页指示
+                        pagination: buildSwiperPagination(),
+                        //点击事件
+                        onTap: (index) {
+                          print(" 点击 " + index.toString());
+                        },
+                        // 视窗比例
+                        viewportFraction: 1,
+                        // 布局方式
+                        //layout: SwiperLayout.STACK,
+                        // 用户进行操作时停止自动翻页
+                        autoplayDisableOnInteraction: true,
+                        // 无线轮播
+                        loop: true,
+                        scale: 1,
+                      ),
                     ),
                   ),
                 ]))),
@@ -66,21 +91,6 @@ class _OpenVipPageState extends State<OpenVipPage> {
           ),
         ),
 
-        //会员价格 card
-        Positioned(
-            top: 128,
-            child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/mine/vip_banner_bg.png"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: SizedBox(
-                height: 164,
-                width: MediaQuery.of(context).size.width,
-              ),
-            )),
         Positioned(
             top: 350,
             left: 20,
@@ -123,15 +133,15 @@ class _OpenVipPageState extends State<OpenVipPage> {
                 ),
               ),
             )),
-            Positioned(
+        Positioned(
             top: 570,
-             left: 120,
-            child: Center(child: Text(
-                  "您的会员将于2020-10-07 到期",
-                  style: TextStyle(
-                      fontSize: 13,
-                      color: Color(0xff666666)),
-                ),)),
+            left: 120,
+            child: Center(
+              child: Text(
+                "您的会员将于2020-10-07 到期",
+                style: TextStyle(fontSize: 13, color: Color(0xff666666)),
+              ),
+            )),
         Positioned(
             top: 600,
             left: 20,
@@ -157,6 +167,28 @@ class _OpenVipPageState extends State<OpenVipPage> {
       ],
     ));
   }
+
+  buildSwiperPagination() {
+    return SwiperPagination(
+      //指示器显示的位置
+      alignment: Alignment.bottomCenter, // 位置 Alignment.bottomCenter 底部中间
+      // 距离调整
+      margin: const EdgeInsets.fromLTRB(0, 0, 0, 5),
+      // 指示器构建
+      builder: DotSwiperPaginationBuilder(
+          // 点之间的间隔
+          space: 2,
+          // 没选中时的大小
+          size: 6,
+          // 选中时的大小
+          activeSize: 12,
+          // 没选中时的颜色
+          color: Colors.black54,
+          //选中时的颜色
+          activeColor: Colors.white),
+    );
+  }
+
   /**
    * 选中页面
    */
