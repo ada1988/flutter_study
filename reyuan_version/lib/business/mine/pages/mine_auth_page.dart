@@ -234,6 +234,5 @@ class _MineAuthPageState extends State<MineAuthPage> {
                 )))
       ],
     ));
-    ;
   }
 }

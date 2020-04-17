@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reyuan_version/business/mine/pages/mine_auth_page.dart';
 import 'package:reyuan_version/business/mine/pages/mine_info_edit.dart';
+import 'package:reyuan_version/business/mine/pages/mine_info_page.dart';
 import 'package:reyuan_version/business/mine/pages/mine_qr_page.dart';
 import 'package:reyuan_version/business/mine/pages/open_vip_page.dart';
 import 'package:reyuan_version/widgets/my_scroll_view.dart';
@@ -25,7 +26,7 @@ class _MinePageState extends State<MinePage> {
         padding: const EdgeInsets.symmetric(horizontal: 0.0),
         children: [
           Gaps.vGap50,
-          Container(
+          GestureDetector(child: Container(
             margin: const EdgeInsets.only(left: 15.0),
             padding: const EdgeInsets.fromLTRB(0, 15.0, 15.0, 15.0),
             child: Row(
@@ -91,7 +92,15 @@ class _MinePageState extends State<MinePage> {
                 ),
               ],
             ),
-          ),
+          ),onTap:()=>{
+              AppNavigator.pushResult(
+                  context,
+                  MineInfoPage(), (result) {
+                setState(() {
+                  //_mineIntroduction = result.toString();
+                });
+              })
+          }),
           Gaps.vGap16,
           ClickItem(
             decoration: BoxDecoration(),
